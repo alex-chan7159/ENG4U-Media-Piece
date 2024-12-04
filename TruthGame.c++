@@ -22,8 +22,40 @@ struct Question { //structure to hold question info
     int correctIndex;
 };
 
-Question generateQuestion(string gamemode) {
-    
+//martyrs
+vector<string> mgood = {"dies for your freedom", "suffers for you", "true heros of Iran", "foundation of the nation", "defend Islamic Republic against foreign aggressors", "protects your faith", "devotion to Islam and nation"};//things they do
+vector<string> mbad = {"ignore responsibility", "surrender to Iraq aggressors", "take long naps", "denounce Allah", "ignore the Islamic law", "disrespect government officials", "challenge authority"};//things they dont do
+
+
+//Faith
+vector<string> fgood = {"hijab", "chador", "manteau", "roo'been", "abaya", "niqab", "shawl"};//appropriate women attire
+vector<string> fbad = {"t-shirt", "short sleeve pants", "dress pants", "short dresses", "high heels", "swimwear", "western clothing", "sleeveless tops", "skin-revealing fabrics"};//not okay articles of clothing
+
+
+
+//Enemy of state
+vector<string> shgood = {"calligraphy", "carpet weaving", "cooking", "gardening", "hiking", "chess", "backgammon", "cycling", "painting", "pottery"}; //hobbies
+vector<string> sogood = {"hospital director", "soldier", ""}//occupation
+//personality
+
+
+/**
+ * Generates new questions!!!!
+ * @param int gamemode
+ */
+Question generateQuestion(int gamemode) {
+switch(gamemode) { //gamemode
+            case 1: //martyr
+            
+                break;
+
+            case 2: //faith
+                break;
+
+            case 3: //state
+            
+                break;
+        }
 }
 
 /**
@@ -42,24 +74,14 @@ bool askQuestion(const Question &q) {
 
 int main() {
 
-    int userChoice = 0;
+    int gamemode = 0;
     int suspicionMeter = 5;
     cout << "Long live the Islamic Republic of Iran!" << endl;
     while (suspicionMeter < 5) { //main game loop
-        cout << "Which gamemode would you like to play? \n 1. Know Your Martyrs! \n 2. Test of faith! \n 3. Identify the enemy of the state! (1/2/3)" << endl;
-        cin >> userChoice; //user input
+        cout << "Which subject would you like to play? \n 1. Know Your Martyrs! \n 2. Test of faith! \n 3. Identify the enemy of the state! (1/2/3)" << endl;
+        cin >> gamemode; //user input
         
-        switch(userChoice) { //gamemode
-            case 1: //martyr
-            
-                break;
-
-            case 2: //faith
-                break;
-
-            case 3: //state
-                break;
-        }
+        Question question = generateQuestion(gamemode);
     }
 
     return 0;
