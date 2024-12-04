@@ -77,7 +77,7 @@ Question generateQuestion(int gamemode) {
             break;
 
         case 2: //faith
-        tempQuestion.question = "Which of these is an appropriate article of clothing for women?";
+        tempQuestion.question = "Which article of clothing is best for preserving a woman's dignity from the eyes of men?";
             for (int i = 0; i < 4; i++) {
                 if (i != rightChoice) {
                     tempQuestion.answers.push_back(pickRandom(fbad)); //add random string from list to the answer vector
@@ -89,10 +89,10 @@ Question generateQuestion(int gamemode) {
             break;
 
         case 3: //state
-        tempQuestion.question = "Which of these is an appropriate article of clothing for women?";
+        tempQuestion.question = "Who is a secret communist sympathizer?";
             for (int i = 0; i < 4; i++) {
                 if (i != rightChoice) {
-                    tempQuestion.answers.push_back(pickRandom(fbad)); //add random string from list to the answer vector
+                    tempQuestion.answers.push_back("Is a " + pickRandom(sogood) + " ! Likes " + pickRandom(shgood) + "! Sometimes " + pickRandom(spgood)); //add random string from list to the answer vector
                 }
                 else {
                     tempQuestion.answers.push_back(pickRandom(fgood)); //add random string from list to the answer vector
@@ -128,8 +128,13 @@ int main() {
         
         //playing game!!!
         Question question = generateQuestion(gamemode); //get random question based on current gamemode
-        cout << question.question << endl; //print out the question
+        cout << question.question << "\n" << endl; //print out the question
+        
         //print out answers to choose from
+        for (int i = 0; i < question.answers.size(); i++) {
+            cout << i + ": \t" + question.answers[i] + "\n" << endl;
+        }
+        
         //ask for answer
     }
 
