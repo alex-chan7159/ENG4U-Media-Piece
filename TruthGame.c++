@@ -16,6 +16,30 @@ Text based educational game for ENG4U film analysis on Persepolis (2007)
 If your suspicion meter reaches 5, you are arrested (game over)
 */
 
+struct Question { //structure to hold question info
+    string question;
+    vector<string> answers;
+    int correctIndex;
+};
+
+Question generateQuestion(string gamemode) {
+    
+}
+
+/**
+ * 
+ * @param Question structure
+ */
+bool askQuestion(const Question &q) {
+    cout << q.question + "(1 - " << q.answers.size() + ")" << endl;
+
+    for (int i = 0; i < q.answers.size(); i++) {
+        cout << i + ": " + q.answers[i] + "\n" << endl;
+    }
+
+    return true;
+}
+
 int main() {
 
     int userChoice = 0;
