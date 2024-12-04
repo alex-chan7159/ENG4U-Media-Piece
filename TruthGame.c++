@@ -92,10 +92,20 @@ Question generateQuestion(int gamemode) {
         tempQuestion.question = "Who is a secret communist sympathizer?";
             for (int i = 0; i < 4; i++) {
                 if (i != rightChoice) {
-                    tempQuestion.answers.push_back("Is a " + pickRandom(sogood) + " ! Likes " + pickRandom(shgood) + "! Sometimes " + pickRandom(spgood)); //add random string from list to the answer vector
+                    tempQuestion.answers.push_back("Is a " + pickRandom(sogood) + " ! Likes " + pickRandom(shgood) + "! Sometimes " + pickRandom(spgood)); //profile consists of random occupations, hobbies, and personality traits
                 }
                 else {
-                    tempQuestion.answers.push_back(pickRandom(fgood)); //add random string from list to the answer vector
+                    int ranNum = generateRandom(4); //generating a random number for a random suspicious attribute
+                    switch (ranNum) {
+                        case 1:
+                            tempQuestion.answers.push_back("Is a " + pickRandom(sobad) + " ! Likes " + pickRandom(shgood) + "! Sometimes " + pickRandom(spgood));
+                        break;
+                        case 2:
+                            tempQuestion.answers.push_back("Is a " + pickRandom(sogood) + " ! Likes " + pickRandom(shbad) + "! Sometimes " + pickRandom(spgood));
+                        break;
+                        case 3:
+                            tempQuestion.answers.push_back("Is a " + pickRandom(sogood) + " ! Likes " + pickRandom(shgood) + "! Sometimes " + pickRandom(spbad));
+                    }
                 }
             }
             break;
@@ -118,12 +128,12 @@ bool askQuestion(const Question &q) {
 }
 
 int main() {
-
+    int userAnswer = 0;
     int gamemode = 0;
     int suspicionMeter = 0;
     cout << "Long live the Islamic Republic of Iran!" << endl;
-    while (suspicionMeter < 5) { //main game loop
-        cout << "Which subject would you like to play? \n 1. Know Your Martyrs! \n 2. Test of faith! \n 3. Identify the enemy of the state! (1/2/3)" << endl;
+    while (suspicionMeter <= 3) { //main game loop, 3 chances in total until imprisonment
+        cout << "Which subject would you like to play? \n 1. Know Your Martyrs! \n 2. Test of faith! \n 3. Identify the enemy of the state!" << endl;
         cin >> gamemode; //user input
         
         //playing game!!!
@@ -136,7 +146,15 @@ int main() {
         }
         
         //ask for answer
+        cin >> userAnswer;
+        if (userAnswer == question.correctIndex + 1) { //user guesses correctly
+            cout << "Good job! It all depends on God's will!" << endl;
+        }
+        else {
+            cout << "Wrong answer! Remember to swear your allegience to the Islamic Republic of Iran, or else you will be damned for all eternity! Suspicion: " + suspicionMeter << endl;
+            suspicionMeter++;
+        }
     }
-
+    cout << "You are being arrested for treason and will be processed under Quaran law." << endl;
     return 0;
 }
