@@ -26,18 +26,19 @@ struct Question { //structure to hold question info
 vector<string> mgood = {"dies for your freedom", "suffers for you", "true heros of Iran", "foundation of the nation", "defend Islamic Republic against foreign aggressors", "protects your faith", "devotion to Islam and nation"};//things they do
 vector<string> mbad = {"ignore responsibility", "surrender to Iraq aggressors", "take long naps", "denounce Allah", "ignore the Islamic law", "disrespect government officials", "challenge authority"};//things they dont do
 
-
 //Faith
 vector<string> fgood = {"hijab", "chador", "manteau", "roo'been", "abaya", "niqab", "shawl"};//appropriate women attire
 vector<string> fbad = {"t-shirt", "short sleeve pants", "dress pants", "short dresses", "high heels", "swimwear", "western clothing", "sleeveless tops", "skin-revealing fabrics"};//not okay articles of clothing
 
-
-
 //Enemy of state
-vector<string> shgood = {"calligraphy", "carpet weaving", "cooking", "gardening", "hiking", "chess", "backgammon", "cycling", "painting", "pottery"}; //hobbies
-vector<string> sogood = {"hospital director", "soldier", ""}//occupation
-//personality
+vector<string> sogood = {"hospital director", "soldier", "quaran reciter", "islamic scholar", "calligrapher", "religious book publisher", "Imam"};//occupation
+vector<string> sobad = {"document counterfieter", "prohibited goods merchant", "women's rights advocator"};
 
+vector<string> shgood = {"calligraphy", "carpet weaving", "cooking", "gardening", "hiking", "chess", "backgammon", "cycling", "painting", "pottery"}; //hobbies
+vector<string> shbad = {"dancing", "world history", "drinking", "activist", "gambling", "unlawful protests", "violating dress codes", "peaceful demonstrations"};
+
+vector<string> spgood = {"Respectful", "Polite", "Hardworking", "Family-oriented", "Honest", "Modest", "Loyal", "Responsible", "Patient", "Hospitable", "Courteous"};//personality
+vector<string> spbad = {"rebellious", "defiant", "disobedient", "disrespectful", "ungrateful"};
 
 /**
  * Generates new questions!!!!
