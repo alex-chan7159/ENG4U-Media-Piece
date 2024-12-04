@@ -11,7 +11,7 @@ Text based educational game for ENG4U film analysis on Persepolis (2007)
     - Test of faith!
     - Identify the enemy of the state! - randomized profiles
 
-If your suspicion meter reaches 5, you are arrested (game over)
+If your suspicion meter reaches 3, you are arrested (game over)
 */
 
 struct Question { //structure to hold question info
