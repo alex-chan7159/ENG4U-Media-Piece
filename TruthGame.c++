@@ -1,8 +1,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <map>
-#include <unordered_map>
 using namespace std;
 /*
 Author: Alex Chan
@@ -11,7 +9,7 @@ Text based educational game for ENG4U film analysis on Persepolis (2007)
 - Question types
     - Know your Martyrs!
     - Test of faith!
-    - Identify the enemy of the state!
+    - Identify the enemy of the state! - randomized profiles
 
 If your suspicion meter reaches 5, you are arrested (game over)
 */
@@ -30,33 +28,79 @@ vector<string> mbad = {"ignore responsibility", "surrender to Iraq aggressors", 
 vector<string> fgood = {"hijab", "chador", "manteau", "roo'been", "abaya", "niqab", "shawl"};//appropriate women attire
 vector<string> fbad = {"t-shirt", "short sleeve pants", "dress pants", "short dresses", "high heels", "swimwear", "western clothing", "sleeveless tops", "skin-revealing fabrics"};//not okay articles of clothing
 
-//Enemy of state
+//State
 vector<string> sogood = {"hospital director", "soldier", "quaran reciter", "islamic scholar", "calligrapher", "religious book publisher", "Imam"};//occupation
 vector<string> sobad = {"document counterfieter", "prohibited goods merchant", "women's rights advocator"};
 
-vector<string> shgood = {"calligraphy", "carpet weaving", "cooking", "gardening", "hiking", "chess", "backgammon", "cycling", "painting", "pottery"}; //hobbies
+vector<string> shgood = {"calligraphy", "carpet weaving", "cooking", "gardening", "hiking", "chess", "cycling", "painting", "pottery"}; //hobbies
 vector<string> shbad = {"dancing", "world history", "drinking", "activist", "gambling", "unlawful protests", "violating dress codes", "peaceful demonstrations"};
 
 vector<string> spgood = {"Respectful", "Polite", "Hardworking", "Family-oriented", "Honest", "Modest", "Loyal", "Responsible", "Patient", "Hospitable", "Courteous"};//personality
 vector<string> spbad = {"rebellious", "defiant", "disobedient", "disrespectful", "ungrateful"};
 
 /**
+ * generates a random number
+ */
+int generateRandom(int limit) {
+    return rand() % limit; //generating a random number, limit is exclusive
+}
+
+/**
+ * choose a random string from a list
+ */
+string pickRandom(const vector<string> list) {
+    return list[generateRandom(list.size())]; //return random string picked from list
+}
+
+/**
  * Generates new questions!!!!
  * @param int gamemode
  */
 Question generateQuestion(int gamemode) {
-switch(gamemode) { //gamemode
-            case 1: //martyr
-            
-                break;
+    Question tempQuestion;
+    int rightChoice = generateRandom(4);
+    tempQuestion.correctIndex = rightChoice;
 
-            case 2: //faith
-                break;
+    switch(gamemode) { //gamemode
+        case 1: //martyr
+        tempQuestion.question = "Which of these is a characteristic of a martyr?";
 
-            case 3: //state
-            
-                break;
-        }
+            for (int i = 0; i < 4; i++) {
+                if (i != rightChoice) {
+                    tempQuestion.answers.push_back(pickRandom(mbad)); //add random string from list to the answer vector
+                }
+                else {
+                    tempQuestion.answers.push_back(pickRandom(mgood)); //add random string from list to the answer vector
+                }
+            }
+            //cout << tempQuestion.answers.at(0);
+            break;
+
+        case 2: //faith
+        tempQuestion.question = "Which of these is an appropriate article of clothing for women?";
+            for (int i = 0; i < 4; i++) {
+                if (i != rightChoice) {
+                    tempQuestion.answers.push_back(pickRandom(fbad)); //add random string from list to the answer vector
+                }
+                else {
+                    tempQuestion.answers.push_back(pickRandom(fgood)); //add random string from list to the answer vector
+                }
+            }
+            break;
+
+        case 3: //state
+        tempQuestion.question = "Which of these is an appropriate article of clothing for women?";
+            for (int i = 0; i < 4; i++) {
+                if (i != rightChoice) {
+                    tempQuestion.answers.push_back(pickRandom(fbad)); //add random string from list to the answer vector
+                }
+                else {
+                    tempQuestion.answers.push_back(pickRandom(fgood)); //add random string from list to the answer vector
+                }
+            }
+            break;
+    }
+    return tempQuestion;
 }
 
 /**
@@ -76,13 +120,17 @@ bool askQuestion(const Question &q) {
 int main() {
 
     int gamemode = 0;
-    int suspicionMeter = 5;
+    int suspicionMeter = 0;
     cout << "Long live the Islamic Republic of Iran!" << endl;
     while (suspicionMeter < 5) { //main game loop
         cout << "Which subject would you like to play? \n 1. Know Your Martyrs! \n 2. Test of faith! \n 3. Identify the enemy of the state! (1/2/3)" << endl;
         cin >> gamemode; //user input
         
-        Question question = generateQuestion(gamemode);
+        //playing game!!!
+        Question question = generateQuestion(gamemode); //get random question based on current gamemode
+        cout << question.question << endl; //print out the question
+        //print out answers to choose from
+        //ask for answer
     }
 
     return 0;
